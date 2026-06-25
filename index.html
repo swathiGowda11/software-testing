@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Shoe Store</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Custom CSS styles */
+        body {
+            padding-top: 56px;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+        }
+
+        .searchInput {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+
+        .searchIcon {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+
+        .limitedOffer {
+            font-weight: bold;
+            color: red;
+        }
+
+        .productGrid {
+            margin-top: 20px;
+        }
+
+        .productItem {
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .productItem:hover {
+            transform: scale(1.05);
+        }
+
+        .productImg {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .productTitle {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .addToCartBtn {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .addToCartBtn:hover {
+            background-color: #0056b3;
+        }
+
+        .features {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+
+        .features .col-md-4 {
+            text-align: center;
+        }
+
+        .features i {
+            font-size: 4em;
+            color: #007bff;
+        }
+
+        .features h3 {
+            margin-top: 20px;
+        }
+
+        .features p {
+            color: #6c757d;
+        }
+
+        .gallerySection {
+            padding: 50px 0;
+        }
+
+        .gallerySection h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .galleryItem img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .newSeasonSection {
+            background-color: #007bff;
+            color: white;
+            padding: 50px 0;
+        }
+
+        .newSeasonSection h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Elite Shoe</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <div class="search">
+                            <input type="text" placeholder="Search..." class="searchInput">
+                            <button type="button" class="searchIcon"><i class="fa fa-search"></i></button>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <span class="limitedOffer">Limited Offer!</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="cart.html" class="btn btn-primary mr-2">View Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="register.html" class="btn btn-success mr-2">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="D:\st project\st project\logiin\login.html" class="btn btn-danger">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Grid -->
+    <div class="container productGrid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="productItem">
+                    <img src="images/product-4.png" alt="Nike Hyper" class="productImg">
+                    <h1 class="productTitle">Nike Hyper</h1>
+                    <button class="addToCartBtn" onclick="addToCart('Nike Hyper', '1799', 'images/product-4.png')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="productItem">
+                    <img src="images/product-5.png" alt="Nike Thunder" class="productImg">
+                    <h1 class="productTitle">Nike Thunder</h1>
+                    <button class="addToCartBtn" onclick="addToCart('Nike Thunder', '5295', 'images/product-5.png')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="productItem">
+                    <img src="images/product-6.png" alt="Nike New Thunder" class="productImg">
+                    <h1 class="productTitle">Nike New Thunder</h1>
+                    <button class="addToCartBtn" onclick="addToCart('Nike New Thunder', '1799', 'images/product-6.png')">Add to Cart</button>
+                </div>
+            </div>
+            <!-- New Products -->
+            <div class="col-md-4">
+                <div class="productItem">
+                    <img src="images/product-1.png" alt="Nike Mod 1" class="productImg">
+                    <h1 class="productTitle">Nike Mod 1</h1>
+                    <button class="addToCartBtn" onclick="addToCart('Nike Mod 1', '2000', 'images/product-1.png')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="productItem">
+                    <img src="images/product-2.png" alt="Nike Mod 2" class="productImg">
+                    <h1 class="productTitle">Nike Mod 2</h1>
+                    <button class="addToCartBtn" onclick="addToCart('Nike Mod 2', '2500', 'images/product-2.png')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="productItem">
+                    <img src="images/product-3.png" alt="Nike Mod 3" class="productImg">
+                    <h1 class="productTitle">Nike Mod 3</h1>
+                    <button class="addToCartBtn" onclick="addToCart('Nike Mod 3', '3000', 'images/product-3.png')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container features">
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Free Shipping</h3>
+                <p>Get free shipping on all orders over $50!</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-undo-alt"></i>
+                <h3>Easy Returns</h3>
+                <p>Easy returns within 30 days of purchase.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>We are here to help you 24/7 with any issues.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="container gallerySection">
+        <h2>Gallery</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="galleryItem">
+                    <img src="images/product-1.png" alt="Product 1">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="galleryItem">
+                    <img src="images/product-2.png" alt="Product 2">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="galleryItem">
+                    <img src="images/product-3.png" alt="Product 3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Season Section -->
+    <div class="newSeasonSection">
+        <div class="container">
+            <h2>New Season Collection</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="productItem">
+                        <img src="images/product-4.png" alt="Nike Hyper" class="productImg">
+                        <h1 class="productTitle">Nike Hyper</h1>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="productItem">
+                        <img src="images/product-5.png" alt="Nike Thunder" class="productImg">
+                        <h1 class="productTitle">Nike Thunder</h1>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="productItem">
+                        <img src="images/product-6.png" alt="Nike New Thunder" class="productImg">
+                        <h1 class="productTitle">Nike New Thunder</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container text-center">
+            <p>&copy; 2024 Elite Shoe. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script>
+        function addToCart(title, price, image) {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems.push({ title, price, image });
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            alert(`${title} has been added to your cart.`);
+        }
+    </script>
+</body>
+</html>

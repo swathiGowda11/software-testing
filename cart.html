@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .cartItem {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .cartItem img {
+            width: 50px;
+            height: auto;
+        }
+        .cartItem span {
+            margin: 0 10px;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Elite Shoe</a>
+        </div>
+    </nav>
+
+    <!-- Cart Items -->
+    <div class="container mt-5">
+        <h2>Your Cart</h2>
+        <div id="cartItemsList" class="mt-3">
+            <!-- Cart items will be inserted here -->
+        </div>
+        <button class="btn btn-primary mt-3" onclick="proceedToPayment()">Proceed to Payment</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Shoe Store. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Function to display cart items
+        function displayCartItems() {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            let cartItemsList = document.getElementById('cartItemsList');
+            cartItemsList.innerHTML = '';
+            cartItems.forEach((item, index) => {
+                let cartItemDiv = document.createElement('div');
+                cartItemDiv.className = 'cartItem';
+                cartItemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <span>${item.name}</span>
+                    <span>Rs ${item.price}</span>
+                    <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsList.appendChild(cartItemDiv);
+            });
+        }
+
+        // Function to remove item from cart
+        function removeFromCart(index) {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems.splice(index, 1); // Remove item at index
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            displayCartItems(); // Update the displayed cart items
+        }
+
+        // Function to proceed to payment
+        function proceedToPayment() {
+            // Redirect to payment page
+            window.location.href = 'payment.html';
+        }
+
+        // Call displayCartItems on page load
+        document.addEventListener('DOMContentLoaded', displayCartItems);
+    </script>
+</body>
+</html>
